@@ -1,6 +1,6 @@
 package Providers;
 
 public interface IReceipt {
-    public int handler(int amount);
+    public int handler();
         
 }

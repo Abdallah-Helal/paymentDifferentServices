@@ -1,10 +1,7 @@
 package Providers;
 
-public class OrangeMobileRechargeProvider extends IServiceProvider{
-    OrangeMobileRechargeProvider(){
-        this.name="Orange Mobile";
-    }
-    public void handler(int amount) {
+public class OrangeProvider implements IServiceProvider{
+    public void handler() {
            
     }
 

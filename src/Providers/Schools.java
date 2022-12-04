@@ -1,17 +1,12 @@
 package Providers;
 
-public class Schools extends IServiceProvider {
+public class Schools implements IServiceProvider {
 
-    public Schools(){
-        this.name="Schools Donation";
-    }
-    @Override
-    public void handler(int amount) {
+    public void handler() {
         // TODO Auto-generated method stub
         
     }
 
-    @Override
     public void creatForm() {
         System.out.println("Welcome to Schools Donation");
         System.out.println("Enter your Number");
