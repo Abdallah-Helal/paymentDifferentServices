@@ -46,10 +46,14 @@ public class Display {
 				String pass = sc.next();
 				boolean tmp = log.login(email, pass);
 				if(tmp){
-					/*ServiceFactory sf=new ServiceFactory();
+					/*Services sf=new Services();
 					Service service=sf.creatService();   	
 					System.out.println(service);			
-					System.out.println(service.provider);		*/
+					System.out.println(service.ID);
+
+					Service service1=sf.creatService();   	
+					System.out.println(service1);			
+					System.out.println(service1.ID);*/
 				}
 				else{
 					Click();
