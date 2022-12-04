@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Providers.*;
+import Services.*;
 
 public class Display {
 	public ILogin log;
 	public ISignUp sign;
-	public Services services=new Services();
 	public IServiceProvider service;
 	public boolean f = false;
 	public Display(){}
@@ -46,15 +46,10 @@ public class Display {
 				String pass = sc.next();
 				boolean tmp = log.login(email, pass);
 				if(tmp){
-					Boolean x=true;
-					IServiceProvider service =services.search();
-					while(service==null){
-						if(service ==null){
-							System.out.println("You wanna try again"); String ans = sc.next();
-							if(ans.charAt(0)!='y'&& ans.charAt(0)!='Y') System.exit(0);
-						}
-						service = services.search();
-					}service.creatForm();					    					
+					/*ServiceFactory sf=new ServiceFactory();
+					Service service=sf.creatService();   	
+					System.out.println(service);			
+					System.out.println(service.provider);		*/
 				}
 				else{
 					Click();

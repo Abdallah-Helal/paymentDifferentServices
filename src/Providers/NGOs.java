@@ -1,16 +1,11 @@
 package Providers;
 
-public class NGOs extends IServiceProvider{
-    public NGOs(){
-        this.name="Non profitable organizations Donation";
-    }
-    @Override
-    public void handler(int amount) {
+public class NGOs implements IServiceProvider{
+    public void handler() {
         // TODO Auto-generated method stub
         
     }
 
-    @Override
     public void creatForm() {
         System.out.println("Welcome to Non profitable organizations Donation");
         System.out.println("Enter your Number");

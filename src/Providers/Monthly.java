@@ -5,7 +5,8 @@ public class Monthly implements IReceipt{
     public Monthly(){
         this.numofmonthes=1;
     }
-    public int handler(int amount){
-        return amount*this.numofmonthes;
+    public int handler(){
+      return numofmonthes;
     }
+
 }
