@@ -12,6 +12,10 @@ public abstract class Service {
         ID++;
     }
 
+    public void creatProvider(){
+        this.servicefactory=new DonationProviderFactory();
+        this.provider=servicefactory.createServiceProvider();
+    }
     public String getName(){
         return this.name;
     }

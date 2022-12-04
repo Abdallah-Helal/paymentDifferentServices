@@ -9,7 +9,6 @@ import Services.*;
 public class Display {
 	public ILogin log;
 	public ISignUp sign;
-	public IServiceProvider service;
 	public boolean f = false;
 	public Display(){}
 	public void Click(){
@@ -46,14 +45,13 @@ public class Display {
 				String pass = sc.next();
 				boolean tmp = log.login(email, pass);
 				if(tmp){
-					/*Services sf=new Services();
-					Service service=sf.creatService();   	
-					System.out.println(service);			
-					System.out.println(service.ID);
+					Service service;
 
-					Service service1=sf.creatService();   	
-					System.out.println(service1);			
-					System.out.println(service1.ID);*/
+					Services ser=new Services();
+					service =ser.search();
+					service.creatProvider();
+					System.out.println(service.provider);
+
 				}
 				else{
 					Click();
