@@ -50,8 +50,6 @@ public class Display {
 					Services ser=new Services();
 					service =ser.search();
 					service.creatProvider();
-					System.out.println(service.provider);
-
 				}
 				else{
 					Click();
