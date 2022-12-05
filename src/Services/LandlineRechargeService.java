@@ -1,8 +1,15 @@
 package Services;
 import ServiceProviderFactorys.LandlineProviderFactory;
+import ServiceProviderFactorys.MobileProviderFactory;
 
 public class LandlineRechargeService extends Service{
     public LandlineRechargeService(){
-        this.name="LandlineRecharge";
+           super();
+          this.name="LandlineRecharge";
     }
+	public void creatProvider() {
+		this.servicefactory=new LandlineProviderFactory();
+        this.provider=servicefactory.createServiceProvider();
+		
+	}
 }

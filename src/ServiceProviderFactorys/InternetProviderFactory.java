@@ -7,10 +7,10 @@ public class InternetProviderFactory implements IServiceProviderFactory{
     Scanner sc = new Scanner(System.in);
 
     public IServiceProvider createServiceProvider() {
-        System.out.println("1-WE?");
+        System.out.println("1-WEe?");
         System.out.println("2-Etisalat?");
         System.out.println("3-Vodafone?");
-        System.out.println("3-Orange?");
+        System.out.println("4-Orange?");
         int choice = sc.nextInt();
         if(choice==1) {
             return new WEProvider();

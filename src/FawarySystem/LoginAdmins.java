@@ -1,7 +1,6 @@
 package FawarySystem;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 
 public class LoginAdmins implements ILogin {

@@ -8,4 +8,9 @@ public class DiscountDecorator extends Service{
         this.servicefactory=service.servicefactory;
         this.provider=service.provider;
     }
+	@Override
+	public void creatProvider() {
+		// TODO Auto-generated method stub
+		
+	}
 }

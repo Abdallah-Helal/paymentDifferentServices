@@ -7,7 +7,6 @@ public class LoginUsers implements ILogin{
 		db = DataBase.Get_Instance();
 		flag = false;
 	}
-
 	public boolean login(String email, String pass) {
 		for(int i = 0;i<db.users.size();i++){
 			if(db.users.get(i).email.equals(email)){

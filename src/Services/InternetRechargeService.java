@@ -1,9 +1,15 @@
 package Services;
 
-import ServiceProviderFactorys.InternetProviderFactory;
+import ServiceProviderFactorys.*;
 
 public class InternetRechargeService extends Service {
     public InternetRechargeService(){
-        this.name="InternetRecharge";
+    	super();
+    	this.name="InternetRecharge";
     }
+	public void creatProvider() {
+		this.servicefactory=new InternetProviderFactory();
+        this.provider=servicefactory.createServiceProvider();
+		
+	}
 }
