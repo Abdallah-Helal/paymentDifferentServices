@@ -11,6 +11,7 @@ public class MobileRechargeService extends Service{
 
 	@Override
 	public void creatProvider() {
+		this.ID++;
 		this.servicefactory=new MobileProviderFactory();
         this.provider=servicefactory.createServiceProvider();
 		

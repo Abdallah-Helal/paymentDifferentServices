@@ -3,12 +3,10 @@ import ServiceProviderFactorys.DonationProviderFactory;
 public class DonationRechargeService extends Service{
    
     public DonationRechargeService(){
-	super();
-	this.name="DonationRecharge";
-        
-        
+		this.name="DonationRecharge";          
     }
 	public void creatProvider() {
+		this.ID++;
 		this.servicefactory=new DonationProviderFactory();
         this.provider=servicefactory.createServiceProvider();
 		

@@ -8,6 +8,7 @@ public class InternetRechargeService extends Service {
     	this.name="InternetRecharge";
     }
 	public void creatProvider() {
+		this.ID++;
 		this.servicefactory=new InternetProviderFactory();
         this.provider=servicefactory.createServiceProvider();
 		

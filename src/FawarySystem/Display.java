@@ -1,98 +1,99 @@
 package FawarySystem;
 
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Person.*;
 import Providers.*;
 import Services.*;
+import Sign.*;
+
 
 public class Display {
-	public ILogin log;
-	public ISignUp sign;
-	public DataBase db = DataBase.Get_Instance();
-	Transactions ts = new Transactions();
-    public int j;
-	public boolean f = false;
-	public Display(){}
+	Scanner sc = new Scanner(System.in);
+	boolean f = false;
+
+	ILogin log;
+	ISignUp sign;
+	Admins admin;
+	Users user;
+	Services services=new Services();
+	DataBase db = DataBase.Get_Instance();
+	
 	public void Click(){
 		if(!f){
 	    	System.out.println("1-Login As Admin!");
 		    System.out.println("2-login AS Users!");
 		    System.out.println("3-Sign Up new users!");
 	    	System.out.println("4-Exit");
-		    Scanner sc = new Scanner(System.in);
 		    int choice = sc.nextInt();
 		    if(choice == 1){
+				
 		    	log = new LoginAdmins();
-		    	System.out.println("Enter name:");
-				String name = sc.next();
-		    	System.out.println("Enter Email:");
-				String email = sc.next();
-				System.out.println("Enter Password:");
-				String pass = sc.next();
-				boolean tmp = log.login(email, pass);
-				if(tmp){
-				    System.out.println("1-See Refunds");					
+				admin =(Admins) log.login();
+				if(admin !=null){
+					while(true){
+					  System.out.println("1-add discount");
+					  System.out.println("2-see Refunds");
+						System.out.println("3-Sign out:");
+					  int choice2 = sc.nextInt();
+					if(choice2==1)	
+						services.setDiscount();
+					else if(choice2==2 && user!=null){
+						user.refund.printRefunds();
+							
+					}							
+				
+				   else{
+					   Click();
 				}
-				else{
-					Click();
+					}
 				}
 			}
 		    else if(choice == 2){
 		    	log = new LoginUsers();
-		    	
-		    	System.out.println("Enter Email:");
-				String email = sc.next();
-				System.out.println("Enter Password:");
-				String pass = sc.next();
-				boolean tmp = log.login(email, pass);
-				for(int i = 0;i<db.users.size();i++){
-					if(db.users.get(i).email.equals(email)){
-						j = i;
-						break;
-					}
-				}
-				if(tmp){
+				user = (Users)log.login();
+				if(user !=null){
 					while(true){
 						System.out.println("1-Add Funds to Wallet:");
 						System.out.println("2-Search for Service:");
-						System.out.println("3-Sign out:");					
+						System.out.println("3-Search for discount");
+						System.out.println("4-Ask for Refund:");	
+						System.out.println("5-Sign out:");
+												
 						choice = sc.nextInt();
 						if(choice == 1){
-							db.users.get(j).obj.add_amount();
+							user.wallet.add_amount();
+							//display users email and his balance in the wallet aftre adding
 							System.out.println("____________________");
-							System.out.println(db.users.get(j).email);
-							System.out.println(db.users.get(j).obj.Balance_amount);
+							System.out.println(user.email);
+							System.out.println(user.wallet.Balance_amount);
 							System.out.println("_____________________");
 
 						}
 						else if(choice == 2){
 					
-					Service service;
-					Services ser=new Services();
-					service =ser.search();
-					service.creatProvider();
-					service.provider.creatForm(email);
-					String name =  service.provider.getName()+service.getName();
-					db.users.get(j).ts.Add_Transaction(email, service.ID, name);
-					}
+							Service service;
+							service =services.search();
+							service.creatProvider();
+							service.provider.creatForm(user);
+							user.ts.Add_Transaction(user,service);
+						}
+						else if(choice==3){
+							services.searchDiscount();
+						}
 						else if(choice == 4){
-							db.users.get(j).ts.search();
-//							db.users.get(j).obj.delete_amount(100);
-//							System.out.println("____________________");
-//							System.out.println(db.users.get(j).email);
-//							System.out.println(db.users.get(j).obj.Balance_amount);
-//							System.out.println("_____________________");
+							user.refund.ask_refund(user);
+							
 						}
 						else{
 							  Click();
-								}
-							}
 						}
-				else{
-					Click();
+					}
 				}
-		}
+			}
+		    
 		    else if(choice == 3){
 		    	sign = new SignupUsers();
 		    	sign.Sign_New();
@@ -106,72 +107,3 @@ public class Display {
 	}
 
 }
-
-//package FawarySystem;
-//
-//import java.util.ArrayList;
-//import java.util.Scanner;
-//
-//import Providers.*;
-//import Services.*;
-//
-//public class Display {
-//	public ILogin log;
-//	public ISignUp sign;
-//	public boolean f = false;
-//	public Display(){}
-//	public void Click(){
-//		if(!f){
-//	    	System.out.println("1-Login As Admin!");
-//		    System.out.println("2-login AS Users!");
-//		    System.out.println("3-Sign Up new users!");
-//	    	System.out.println("4-Exit");
-//		    Scanner sc = new Scanner(System.in);
-//		    int choice = sc.nextInt();
-//		    if(choice == 1){
-//		    	log = new LoginAdmins();
-//		    	System.out.println("Enter Email:");
-//				String email = sc.next();
-//				System.out.println("Enter Password:");
-//				String pass = sc.next();
-//				boolean tmp = log.login(email, pass);
-//				if(tmp){
-//				    System.out.println("1-See Refunds");					
-//				}
-//				else{
-//					Click();
-//				}
-//			}
-//		    else if(choice == 2){
-//		    	log = new LoginUsers();
-//		    	System.out.println("Enter Email:");
-//				String email = sc.next();
-//				System.out.println("Enter Password:");
-//				String pass = sc.next();
-//				boolean tmp = log.login(email, pass);
-				
-//				if(tmp){
-					
-//
-//                         Services ser=new Services();
-//                         service =ser.search();
-//                          service.creatProvider();		    					
-//				}
-				
-//				else{
-//					Click();
-//				}
-//			}
-//		    else if(choice == 3){
-//		    	sign = new SignupUsers();
-//		    	sign.Sign_New();
-//				Click();
-//		    }
-//		    else{
-//		    	System.out.println("Terminated Program!");
-//		    	System.exit(0);
-//		    }
-//		}
-//	}
-//
-//}

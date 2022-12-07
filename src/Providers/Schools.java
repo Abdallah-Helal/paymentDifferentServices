@@ -3,41 +3,47 @@ package Providers;
 import java.util.Scanner;
 
 import FawarySystem.*;
+import Payment.CreditCardPayment;
+import Payment.OnDeleviryPayment;
+import Payment.WalletPayment;
+import Person.Users;
 
 public class Schools extends IServiceProvider {
-    public Schools(){
+	int amount;
+	int y ;
+	String num;
+	Scanner scan = new Scanner(System.in);
+	public Schools(){
         this.name="Schools";
     }
-    public void creatForm(String email) {
-		Scanner scan = new Scanner(System.in);
+    public void creatForm(Users user) {
     	System.out.println("Welcome to Schools Donation");
         System.out.println("Enter your Number");
-        String num = scan.next();
+        num = scan.next();
         System.out.println("Enter your Amount");
-        int amount = scan.nextInt();
-        handler(email,amount);
+        amount = scan.nextInt();
+        handler(user);
         
         
     }
-    public void handler(String email,int amount) {
-		Scanner scan = new Scanner(System.in);
+    public void handler(Users user) {
     	boolean x = false;
         System.out.println("1-wallet");
         System.out.println("2-Credit Card");
         System.out.println("3-On Deleviry");
     	System.out.println("Enter way of payment:");
-    	int y = scan.nextInt();
+    	 y = scan.nextInt();
         if(y == 1){
          this.payment = new WalletPayment();
-         x = this.payment.pay(email,amount);
+         x = this.payment.pay(user,amount);
         }
         else if (y == 2){
         	this.payment = new CreditCardPayment();
-            x = this.payment.pay(email,amount);        	
+            x = this.payment.pay(user,amount);        	
         }
         else{
         	this.payment = new OnDeleviryPayment();
-            x = this.payment.pay(email,amount);      
+            x = this.payment.pay(user,amount);      
         }
         if (x == true ){
         	System.out.println("Service Complete Successfully!");

@@ -4,33 +4,32 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import Person.Users;
 import Providers.*;
 import Services.*;
 
 public class Transactions {
-	public DataBase db = DataBase.Get_Instance();
-	public Transactions(){
-	}
-	public Map<String,Map<Integer,String>> trans = new HashMap <String,Map<Integer,String>>(); 
-	public void Add_Transaction(String email,int id,String name){
+	public Map<String,Map<Integer,String>> trans = new HashMap <String,Map<Integer,String>>();
+	public Map <Integer,Integer> map= new HashMap<Integer,Integer>();
+	public void Add_Transaction(Users u,Service service){
 		boolean x = true;
-			if(trans.get(email) == null){
-				x = false;
-			}
+		if(trans.get(u.email) == null){
+			x = false;
+		}
 		if(x == true){
-//		trans.put(email, new HashMap<Integer,String>());
-		trans.get(email).put(id, name);
+			trans.get(u.email).put(Service.ID,service.provider.getName()+service.getName());
 		}
 		else{
-			trans.put(email, new HashMap<Integer,String>());
-			trans.get(email).put(id, name);
+			trans.put(u.email, new HashMap<Integer,String>());
+			trans.get(u.email).put(Service.ID,service.provider.getName()+service.getName());
+			
 		}
 		
         System.out.println("Transaction Added");
 
 		
 	}
-	public void search(){
+	public void print(){
 		for (Entry<String, Map<Integer, String>> letterEntry : trans.entrySet()) {
 		    String letter = letterEntry.getKey();
 		    for (Map.Entry<Integer,String> nameEntry : letterEntry.getValue().entrySet()) {

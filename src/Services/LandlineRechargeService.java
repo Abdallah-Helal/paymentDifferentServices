@@ -8,6 +8,7 @@ public class LandlineRechargeService extends Service{
           this.name="LandlineRecharge";
     }
 	public void creatProvider() {
+        this.ID++;
 		this.servicefactory=new LandlineProviderFactory();
         this.provider=servicefactory.createServiceProvider();
 		
