@@ -38,6 +38,7 @@ public class Refund {
 		else{
 			reuser.get(user.email).put(user.ts.trans.get(user.email).get(choice),"Waiting");
 		}
+		db.addRefunds(user, choice ,user.ts.trans.get(user.email).get(choice));
 		connection.put(choice, user.email);
 	}
 

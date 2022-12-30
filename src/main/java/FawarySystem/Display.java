@@ -120,6 +120,7 @@ public class Display {
 		if(user!=null){
 			if(user.wallet.add_amount(obj.Balance_amount)){
 				user.ts.Add_wallet_trans(user, obj);
+				db.addWalletTrans(user, obj.Balance_amount);
 				return new ResponseEntity<>(user, HttpStatus.OK);
 			}
 		}
@@ -147,6 +148,7 @@ public class Display {
 				boolean x = service.provider.creatForm(user,form);
 				if(x){
 				    user.ts.Add_Transaction(user,service);
+					db.addTransaction(user, service);
 					user.service_money.put(service.ID, (double) form.amount);
 					return new ResponseEntity<>(user, HttpStatus.OK);
 				}
@@ -207,6 +209,21 @@ public class Display {
     public ResponseEntity<List>  showDiscounts() {
 		if(user!=null){
 			return  new ResponseEntity<>( services.searchDiscount(), HttpStatus.OK);
+		}
+		return new ResponseEntity<>( null, HttpStatus.BAD_REQUEST);
+	}
+	
+	@GetMapping(value = "/ShowAllUsersTransactions")
+    public ResponseEntity<Map>  getAllUsersTrans() {
+		if(admin!=null){
+			return  new ResponseEntity<>( db.getALLTransactions(), HttpStatus.OK);
+		}
+		return new ResponseEntity<>( null, HttpStatus.BAD_REQUEST);
+		
+	}@GetMapping(value = "/ShowAllUsersRefunds")
+    public ResponseEntity<Map>  getAllUsersREF() {
+		if(admin!=null){
+			return  new ResponseEntity<>( db.getALLRefunds(), HttpStatus.OK);
 		}
 		return new ResponseEntity<>( null, HttpStatus.BAD_REQUEST);
 		

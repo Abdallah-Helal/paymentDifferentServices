@@ -27,8 +27,6 @@ public class Transactions {
 			trans.get(u.email).put(Service.ID,service.provider.getName()+service.getName());
 			
 		}
-
-		
 	}
 	public void Add_wallet_trans(Users u,Wallet w){
         int amount =(int)w.Balance_amount ;
