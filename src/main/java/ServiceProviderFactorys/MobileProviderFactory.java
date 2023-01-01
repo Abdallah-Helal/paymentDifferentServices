@@ -8,6 +8,7 @@ import Providers.*;
 
 public class MobileProviderFactory implements IServiceProviderFactory {
     Scanner sc = new Scanner(System.in);
+    //create provider to the user for service  mobile when he chooce it
     public IServiceProvider createServiceProvider(String choice) {
         choice=choice.toLowerCase();
 

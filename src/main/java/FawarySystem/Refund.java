@@ -28,6 +28,7 @@ public class Refund {
 		}
 		return instance;
 	}
+	//user use it to ask refund of it's services
 	public void ask_refund(Users user,int choice){
 		
         refunds.put(choice,user.ts.trans.get(user.email).get(choice) );
@@ -41,21 +42,23 @@ public class Refund {
 		db.addRefunds(user, choice ,user.ts.trans.get(user.email).get(choice));
 		connection.put(choice, user.email);
 	}
-
+//this function for admin which can accept or reject users refunds 
 	public Map<Integer,String> setStatusOfSpecificRefunds(int choice,String status){
         if(status.contains("Accept")){
 			String mail = connection.get(choice);
 			int found;
         	reuser.get(mail).replace(refunds.get(choice),"Accepted");
+			//if admin accept we remove this refund from refunds
         	refunds.remove(choice);
 				Users u = db.getUser(mail);
 				if (u != null) {
-				System.out.println(u.email);
+				//if admin accept return money of this transaction to user wallet	
 				u.returnmoney(choice);
 			}
 
     	}
         else{
+			//if user reject the refund we also remove it from refunds
         	reuser.get(connection.get(choice)).replace(refunds.get(choice),"Rejected");
         	refunds.remove(choice);
         }
@@ -63,6 +66,7 @@ public class Refund {
 		
         
 	}
+	//return to user all of his refunds
 	public Map<String,Map<String,String>> printuser(Users u){
 		return reuser;
 	}

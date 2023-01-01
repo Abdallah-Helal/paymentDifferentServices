@@ -5,6 +5,8 @@ public class Quarter implements IReceipt {
     public Quarter(){
         this.numofmonthes=3;
     }
+     //handle users payment Servecies for each transction user do
+
     public int handler(){
         return this.numofmonthes;
     }

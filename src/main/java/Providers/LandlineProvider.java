@@ -24,6 +24,8 @@ public class LandlineProvider extends IServiceProvider {
         
         
     }
+     //handle users payment Servecies for each transction user do
+
     public boolean handler(Users user) {
     	boolean x = false;
         if(this.form.Way.contains("wallet")){

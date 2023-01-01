@@ -19,6 +19,7 @@ public class Users extends Person {
 		wallet = new Wallet();
 		ts = new Transactions();
 	}
+	//this function return to user money in his wallet when its refund accepted
 	public void returnmoney(int id){
 		for (Map.Entry<Integer,Double> entry : service_money.entrySet()){
 			if (entry.getKey().equals(id)) {

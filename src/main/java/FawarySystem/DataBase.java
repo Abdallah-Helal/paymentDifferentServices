@@ -18,6 +18,7 @@ public class DataBase{
 		new Admins("ballo","123456","ballo@gmail.com")
 	};
 	private DataBase(){}
+	//add all users transactions in history 
 	public void addTransaction(Users u,Service ser){
 		if(transactionsHistory.get(u.email) == null){
 			
@@ -28,6 +29,7 @@ public class DataBase{
 			transactionsHistory.get(u.email).put(ser.ID,ser.provider.getName()+ser.getName());
 		}
 }
+	//add all Refunds in history 
     public void addRefunds(Users u,int id, String name ){
 	if(refundsHistory.get(u.email) == null){
 		

@@ -5,6 +5,8 @@ import Providers.LandlineProvider;
 import Providers.*;
 
 public class LandlineProviderFactory implements IServiceProviderFactory {
+    //create provider to the user for service  landline when he chooce it
+
     public IServiceProvider createServiceProvider(String choice) {
         choice=choice.toLowerCase();
         if(choice.contains("monthly"))

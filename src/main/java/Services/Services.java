@@ -16,7 +16,7 @@ public class Services {
         services.add(new DonationRechargeService());
 
     }
-    
+    //return to the user providers of service that he search for it
     public Service search(String query){
         Service selections=null;
         char ch =Character.toUpperCase(query.charAt(0));
