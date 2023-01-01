@@ -1,16 +1,17 @@
 package Form;
 
+import java.security.PublicKey;
+
 public class Form {
     public String number;
     public int amount;
     public String Way;
     public Form (){}
-    Public void getnum(){
+    public String getnum(){
         return this.number;
     }
-    Public void getamount(){
+    public int getamount(){
         return this.amount;
-    }  Public void getway(){
-        return this.Way;
-    }
+    }  
+
 }
