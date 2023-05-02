@@ -1,2 +1,2 @@
 # paymentDifferentServices
-<img align="right" src="update classdiagram.jpg" width = 250px/>
+<img align="right" src="update classdiagram.jpg" />
